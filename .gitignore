@@ -1,0 +1,21 @@
+# Entorno virtual
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db.sqlite3
+
+# Archivos temporales
+.DS_Store
+Thumbs.db
+
+# Configuración local
+*.env
+.env*
+*.log
+*.pot
+*.sqlite3
+
+# Carpeta estática recolectada
+staticfiles/
