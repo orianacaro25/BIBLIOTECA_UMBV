@@ -1,0 +1,148 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+
+
+    <title>Biblioteca - {% block titulo %}{% endblock %}</title>
+</head>
+
+<style>
+    .login_section {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loginBox {
+        width: 80%;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .loginBox h2 {
+        text-align: center;
+        font-weight: 400;
+        margin-bottom: 2rem !important;
+    }
+
+    .loginContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .loginMedia {
+        padding: 5px;
+        display: flex;
+        width: 30%;
+        justify-content: space-between;
+        align-items: center;
+        border-right: 2px solid #ccc;
+    }
+
+    .loginFormBox {
+        padding-left: 20px;
+        flex: 1;
+    }
+
+    .loginForm {
+        display: flex;
+        flex-direction: column;
+        padding: 35px;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .loginForm label {
+        color: #000000cc;
+        margin-bottom: 5px;
+    }
+
+    .loginForm input {
+        width: 100%;
+        height: 40px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ddd !important;
+        outline: none;
+        padding-left: 15px;
+    }
+
+    .loginForm button {
+        background: #950014;
+        width: max-content;
+        padding: 10px 40px;
+        border: none;
+        border-radius: 50px;
+        margin-top: 10px;
+        margin-right: auto;
+        color: #FFF;
+        font-weight: 400;
+        letter-spacing: .2px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .loginForm button:hover {
+        background: #4c0c0c;
+    }
+
+    .loginForm > a {
+        margin-right: auto;
+        margin-top: 15px;
+        font-size: clamp(0.7rem, 0.45rem + 0.8vw, 0.9rem);
+    }
+
+    .loginForm p {
+        margin-right: auto;
+        margin-top: 10px;
+        font-size: clamp(0.7rem, 0.45rem + 0.8vw, 0.9rem);
+    }
+</style>
+
+<body>
+
+    <section class="login_section">
+    <div class="loginBox">
+        <h2>Inicio de sesión</h2>
+        <div class="loginContainer">
+            <div class="loginMedia">
+                <img src="{% static 'img/escudo_UMBV.jpeg' %}" alt="Logo UMBV" width="100" height="150">
+                <img src="{% static 'img/logo_UMBV.png' %}" alt="Logo UMBV" width="150" height="150">
+            </div>
+            <div class="loginFormBox">
+                <form method="post" class="loginForm">
+                    {% csrf_token %}
+                    
+                    <label for="{{ form.username.id_for_label }}">Usuario</label>
+                    {{ form.username }}
+                    
+                    <label for="{{ form.password.id_for_label }}">Contraseña</label>
+                    {{ form.password }}
+                    
+                    <button type="submit">Ingresar</button>
+                    
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <p>¿No tienes cuenta? <a href="{% url 'registro' %}">Regístrate</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+
+</html>
